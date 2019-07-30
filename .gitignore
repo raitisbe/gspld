@@ -11,3 +11,5 @@
 src/layman/static/test-client
 
 /pg
+
+/liferay/tmp

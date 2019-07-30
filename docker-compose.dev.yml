@@ -114,3 +114,16 @@ services:
         - 8080:8080
         - 8081:8081
 
+   liferay:
+      container_name: liferay
+      build:
+        context: liferay_docker
+        dockerfile: Dockerfile
+#      image: liferay/portal:7.1.3-ga4
+      ports:
+        - 8082:8080
+      volumes:
+# https://github.com/docker/compose/issues/3270#issuecomment-206214034
+# ./liferay/tmp must be owned by non-root
+        - ./liferay/tmp:/etc/liferay/tmp # for copying files from within the container to outer space
+        - ./liferay/hypersonic:/etc/liferay/mount/files/data/hypersonic
